@@ -34,6 +34,11 @@ dimension = len(embedding_matrix[0])
 index = faiss.IndexFlatL2(dimension)
 index.add(embedding_matrix)
 
+# Save FAISS index and embeddings
+os.makedirs("faiss_index", exist_ok=True)
+faiss.write_index(index, "faiss_index/faiss.index")
+np.save("faiss_index/embeddings.npy", embeddings)
+
 # User Query
 query = "What is retrieval augmented generation?"
 query_embedding = np.array(get_embedding(query)).astype("float32").reshape(1, -1)
