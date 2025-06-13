@@ -7,7 +7,7 @@ import os
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Load chunks
-with open("../day04_vector_db/sample_chunks.json", "r") as f:
+with open("../day03_chunking_embeddings/sample_chunks.json", "r") as f:
     chunks = json.load(f)
 
 # Load FAISS index
@@ -17,7 +17,7 @@ index = faiss.read_index("../day04_vector_db/faiss_index/faiss.index")
 embeddings = np.load("../day04_vector_db/faiss_index/embeddings.npy")
 
 # Map FAISS index ids to original chunk texts
-id_to_chunk = {i: chunk["content"] for i, chunk in enumerate(chunks)}
+id_to_chunk = {i: chunk for i, chunk in enumerate(chunks)}
 
 def embed_query(query):
     response = client.embeddings.create(
@@ -29,7 +29,11 @@ def embed_query(query):
 def retrieve_chunks(query, top_k=3):
     query_embedding = embed_query(query)
     _, indices = index.search(np.array([query_embedding]), top_k)
-    results = [id_to_chunk[i] for i in indices[0]]
+    
+    results = []
+    for i in indices[0]:
+        if i != -1 and i in id_to_chunk:
+            results.append(id_to_chunk[i])
     return results
 
 if __name__ == "__main__":
