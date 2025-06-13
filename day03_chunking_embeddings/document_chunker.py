@@ -9,6 +9,9 @@ import nltk
 from openai import OpenAI
 import tiktoken
 
+# Save chunks to JSON file
+import json
+
 # Load tokenizer for sentence splitting
 nltk.download("punkt", quiet=True)
 nltk.download('punkt_tab', quiet=True)
@@ -70,3 +73,8 @@ for i, chunk in enumerate(chunks):
 
 print(f"\n {len(embeddings)} embeddings created.")
 
+output_path = "sample_chunks.json"
+with open(output_path, "w") as f:
+    json.dump(chunks, f, indent=2)
+
+print(f"{len(chunks)} chunks written to {output_path}")
