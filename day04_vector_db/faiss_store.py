@@ -11,10 +11,10 @@ from openai import OpenAI
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Load chunks from previous step
-with open("sample_chunks.json", "r") as f:
+with open("../day03_chunking_embeddings/sample_chunks.json", "r") as f:
     chunks = json.load(f)
 
-texts = [chunk["content"] for chunk in chunks]
+texts = [chunk for chunk in chunks]
 
 # Get embeddings for each chunk
 def get_embedding(text):

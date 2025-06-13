@@ -11,10 +11,10 @@ from chromadb.config import Settings
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Load chunks
-with open("sample_chunks.json", "r") as f:
+with open("../day03_chunking_embeddings/sample_chunks.json", "r") as f:
     chunks = json.load(f)
 
-texts = [chunk["content"] for chunk in chunks]
+texts = [chunk for chunk in chunks]
 
 # Get embeddings
 def get_embedding(text):
