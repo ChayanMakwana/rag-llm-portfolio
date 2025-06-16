@@ -8,7 +8,7 @@ from prompt_templates import generate_prompt
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Load document chunks
-with open("../day04_vector_db/sample_chunks.json", "r") as f:
+with open("../day03_chunking_embeddings/sample_chunks.json", "r") as f:
     chunks = json.load(f)
 
 # Load FAISS index and embeddings
