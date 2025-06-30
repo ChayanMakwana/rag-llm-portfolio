@@ -1,0 +1,15 @@
+{
+  "user_123": [
+    {
+      "query": "What are the working hours?",
+      "retrieved_chunks": ["Our standard workweek is 40 hours...", "..."],
+      "response": "Core hours are between 10 AM and 4 PM..."
+    },
+    {
+      "query": "What is the leave policy?",
+      "retrieved_chunks": ["All full-time employees are entitled to 18 days...", "..."],
+      "response": "Employees receive 18 days annual leave..."
+    }
+  ]
+}
+
