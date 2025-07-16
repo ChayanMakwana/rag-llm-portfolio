@@ -10,12 +10,12 @@ USER_ID = "user_123"  # In real app, generate dynamically
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Load document chunks
-with open("sample_chunks.json", "r") as f:
+with open("../shared_data/sample_chunks.json", "r") as f:
     chunks = json.load(f)
 
 # Load FAISS index + embedding matrix
-index = faiss.read_index("faiss_index/faiss.index")
-embeddings = np.load("faiss_index/embeddings.npy")
+index = faiss.read_index("../shared_data/faiss_index/faiss.index")
+embeddings = np.load("../shared_data/faiss_index/embeddings.npy")
 id_to_chunk = {i: chunk for i, chunk in enumerate(chunks)}
 
 # Load memory
