@@ -8,8 +8,8 @@ from openai import OpenAI
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Load FAISS index and chunks
-INDEX_PATH = "../day04_vector_db/faiss_index/faiss.index"
-CHUNKS_PATH = "../day03_chunking_embeddings/sample_chunks.json"
+INDEX_PATH = "../shared_data/faiss_index/faiss.index"
+CHUNKS_PATH = "../shared_data/sample_chunks.json"
 
 print("Loading FAISS index and chunks...")
 index = faiss.read_index(INDEX_PATH)
