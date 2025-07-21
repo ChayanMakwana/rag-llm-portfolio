@@ -7,14 +7,14 @@ import os
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Load chunks
-with open("../day03_chunking_embeddings/sample_chunks.json", "r") as f:
+with open("../sample_data/sample_chunks.json", "r") as f:
     chunks = json.load(f)
 
 # Load FAISS index
-index = faiss.read_index("../day04_vector_db/faiss_index/faiss.index")
+index = faiss.read_index("../sample_data/faiss_index/faiss.index")
 
 # Load stored embeddings
-embeddings = np.load("../day04_vector_db/faiss_index/embeddings.npy")
+embeddings = np.load("../sample_data/faiss_index/embeddings.npy")
 
 # Map FAISS index ids to original chunk texts
 id_to_chunk = {i: chunk for i, chunk in enumerate(chunks)}
